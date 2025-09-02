@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Correspondencia{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/floating-button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> </head>
+<body>
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="newOficioBtn" class="floating-button">
+       <a href="{{ url_for('oficios.new_oficio') }}" title="Crear nuevo oficio" draggable="false">
+    +
+</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/floating-button-drag.js') }}"></script>
+</body>
+</html>

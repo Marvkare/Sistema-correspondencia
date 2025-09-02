@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Crear Nuevo Oficio - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-3xl">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Crear Nuevo Oficio</h2>
+    <form method="POST" class="space-y-6 bg-white p-8 rounded-lg shadow-md">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="fecha" class="block text-sm font-medium text-gray-700">Fecha</label>
+                <input type="date" name="fecha" id="fecha" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="mes" class="block text-sm font-medium text-gray-700">Mes</label>
+                <input type="text" name="mes" id="mes" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="folio" class="block text-sm font-medium text-gray-700">Folio</label>
+                <input type="text" name="folio" id="folio" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="no_oficio" class="block text-sm font-medium text-gray-700">No. Oficio</label>
+                <input type="text" name="no_oficio" id="no_oficio" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+        </div>
+
+        <div>
+            <label for="persona_u_organizacion" class="block text-sm font-medium text-gray-700">Persona u Organización</label>
+            <input type="text" name="persona_u_organizacion" id="persona_u_organizacion" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        </div>
+        
+        <div>
+            <label for="domicilio" class="block text-sm font-medium text-gray-700">Domicilio</label>
+            <input type="text" name="domicilio" id="domicilio" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
+                <input type="tel" name="telefono" id="telefono" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="area" class="block text-sm font-medium text-gray-700">Área</label>
+                <input type="text" name="area" id="area" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+        </div>
+
+        <div>
+            <label for="peticion" class="block text-sm font-medium text-gray-700">Petición</label>
+            <textarea name="peticion" id="peticion" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="estatus" class="block text-sm font-medium text-gray-700">Estatus</label>
+                <select name="estatus" id="estatus" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    <option value="">Selecciona un estatus</option>
+                    <option value="entregado">Entregado</option>
+                    <option value="atendido">Atendido</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="no_atendido">No Atendido</option>
+                </select>
+            </div>
+            <div>
+                <label for="folio_respuesta_seguimiento" class="block text-sm font-medium text-gray-700">Folio de Respuesta y Seguimiento</label>
+                <input type="text" name="folio_respuesta_seguimiento" id="folio_respuesta_seguimiento" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+        </div>
+        
+        <div>
+            <label for="observaciones" class="block text-sm font-medium text-gray-700">Observaciones</label>
+            <textarea name="observaciones" id="observaciones" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div>
+            <label for="direccion_de_turno" class="block text-sm font-medium text-gray-700">Dirección de Turno</label>
+            <input type="text" name="direccion_de_turno" id="direccion_de_turno" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        </div>
+        
+        <div>
+            <label for="pdf_oficio_url" class="block text-sm font-medium text-gray-700">URL del PDF del Oficio</label>
+            <input type="url" name="pdf_oficio_url" id="pdf_oficio_url" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        </div>
+
+        <div class="flex justify-end">
+            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Guardar Oficio
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
