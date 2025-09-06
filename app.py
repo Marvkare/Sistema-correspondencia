@@ -1,10 +1,14 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import secrets
 
 # Import the Blueprint from your new file
 from blueprints.oficios import oficios_bp
+from blueprints.usuarios import usuarios_bp
+
+# Import the User and users dictionary from the new models file
+from models import users, User
 
 # Inicialización de la aplicación
 app = Flask(__name__)
@@ -16,28 +20,9 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
-# Register the Blueprint with your app
+# Register the Blueprints with your app
 app.register_blueprint(oficios_bp)
-# --- Simulación de una base de datos de usuarios ---
-# En un entorno real, usarías una base de datos como SQL con SQLAlchemy
-class User(UserMixin):
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
-        self.roles = [] # Aquí se almacenan los roles del usuario
-
-# Usuario por defecto y "base de datos"
-users = {
-    1: User(1, 'admin', 'adminpassword')
-}
-
-roles = {
-    'admin': ['admin_role'], # Ejemplo de rol
-}
-
-# Asigna el rol 'admin' al usuario 'admin'
-users[1].roles.append('admin_role')
+app.register_blueprint(usuarios_bp)
 
 @login_manager.user_loader
 def load_user(user_id):
